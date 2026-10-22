@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\LyxCsharp.Units\LyxCsharp.Units.csproj" />
+  </ItemGroup>
+</Project>
