@@ -1,4 +1,4 @@
-namespace LyxCsharp.Hydraulics;
+namespace LymCsharp.Hydraulics;
 
 /// <summary>A fluid with the properties pipe flow needs.</summary>
 public sealed record Fluid(string Name, double DensityKgPerCubicMetre, double ViscosityPascalSeconds)

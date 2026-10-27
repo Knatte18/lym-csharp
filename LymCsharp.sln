@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyxCsharp.Hydraulics", "src\LyxCsharp.Hydraulics\LyxCsharp.Hydraulics.csproj", "{90F43200-F61F-4D23-8ECD-D91CE545974E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LymCsharp.Hydraulics", "src\LymCsharp.Hydraulics\LymCsharp.Hydraulics.csproj", "{90F43200-F61F-4D23-8ECD-D91CE545974E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyxCsharp.Units", "src\LyxCsharp.Units\LyxCsharp.Units.csproj", "{1A84FF4E-D31A-4942-9749-09730BB4B316}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LymCsharp.Units", "src\LymCsharp.Units\LymCsharp.Units.csproj", "{1A84FF4E-D31A-4942-9749-09730BB4B316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyxCsharp.Reporting", "src\LyxCsharp.Reporting\LyxCsharp.Reporting.csproj", "{CEB8DA1B-FB5B-4262-A7E2-BBCC9090DC42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LymCsharp.Reporting", "src\LymCsharp.Reporting\LymCsharp.Reporting.csproj", "{CEB8DA1B-FB5B-4262-A7E2-BBCC9090DC42}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyxCsharp.Hydraulics.Tests", "tests\LyxCsharp.Hydraulics.Tests\LyxCsharp.Hydraulics.Tests.csproj", "{690E77E3-5F8A-47DA-B569-A4BA4D7191D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LymCsharp.Hydraulics.Tests", "tests\LymCsharp.Hydraulics.Tests\LymCsharp.Hydraulics.Tests.csproj", "{690E77E3-5F8A-47DA-B569-A4BA4D7191D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyxCsharp.Units.Tests", "tests\LyxCsharp.Units.Tests\LyxCsharp.Units.Tests.csproj", "{A92F8012-CA12-445C-AE88-EE938C317F4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LymCsharp.Units.Tests", "tests\LymCsharp.Units.Tests\LymCsharp.Units.Tests.csproj", "{A92F8012-CA12-445C-AE88-EE938C317F4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

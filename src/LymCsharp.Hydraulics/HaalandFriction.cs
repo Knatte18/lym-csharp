@@ -1,4 +1,4 @@
-namespace LyxCsharp.Hydraulics;
+namespace LymCsharp.Hydraulics;
 
 /// <summary>Laminar 64/Re below 2300, the Haaland explicit formula above.</summary>
 public sealed class HaalandFriction : IFrictionModel

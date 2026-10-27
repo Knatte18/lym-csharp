@@ -1,4 +1,4 @@
-namespace LyxCsharp.Hydraulics;
+namespace LymCsharp.Hydraulics;
 
 public enum FlowRegime
 {

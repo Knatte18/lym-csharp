@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\LymCsharp.Units\LymCsharp.Units.csproj" />
+    <ProjectReference Include="..\LymCsharp.Hydraulics\LymCsharp.Hydraulics.csproj" />
+  </ItemGroup>
+</Project>

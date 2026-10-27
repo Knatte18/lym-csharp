@@ -1,6 +1,6 @@
-using LyxCsharp.Units;
+using LymCsharp.Units;
 
-namespace LyxCsharp.Hydraulics;
+namespace LymCsharp.Hydraulics;
 
 /// <summary>Result of a pipe flow calculation.</summary>
 public sealed record PipeFlowResult(

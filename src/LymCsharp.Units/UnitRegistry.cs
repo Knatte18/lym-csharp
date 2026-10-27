@@ -1,4 +1,4 @@
-namespace LyxCsharp.Units;
+namespace LymCsharp.Units;
 
 /// <summary>Looks units up by symbol.</summary>
 public static class UnitRegistry

@@ -1,4 +1,4 @@
-namespace LyxCsharp.Units;
+namespace LymCsharp.Units;
 
 /// <summary>The built-in units. Bases: pascal, metre, cubic metre per second.</summary>
 public static class UnitCatalog

@@ -1,7 +1,7 @@
-using LyxCsharp.Hydraulics;
-using LyxCsharp.Units;
+using LymCsharp.Hydraulics;
+using LymCsharp.Units;
 
-namespace LyxCsharp.Reporting;
+namespace LymCsharp.Reporting;
 
 /// <summary>Renders calculation results as text.</summary>
 public static class ResultFormatter

@@ -1,4 +1,4 @@
-namespace LyxCsharp.Units;
+namespace LymCsharp.Units;
 
 /// <summary>The physical dimension a unit measures.</summary>
 public enum Dimension

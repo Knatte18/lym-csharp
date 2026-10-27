@@ -10,6 +10,6 @@
   </ItemGroup>
   <ItemGroup>
     <Using Include="NUnit.Framework" />
-    <ProjectReference Include="..\..\src\LyxCsharp.Units\LyxCsharp.Units.csproj" />
+    <ProjectReference Include="..\..\src\LymCsharp.Units\LymCsharp.Units.csproj" />
   </ItemGroup>
 </Project>

@@ -10,8 +10,8 @@
   </ItemGroup>
   <ItemGroup>
     <Using Include="NUnit.Framework" />
-    <ProjectReference Include="..\..\src\LyxCsharp.Units\LyxCsharp.Units.csproj" />
-    <ProjectReference Include="..\..\src\LyxCsharp.Hydraulics\LyxCsharp.Hydraulics.csproj" />
-    <ProjectReference Include="..\..\src\LyxCsharp.Reporting\LyxCsharp.Reporting.csproj" />
+    <ProjectReference Include="..\..\src\LymCsharp.Units\LymCsharp.Units.csproj" />
+    <ProjectReference Include="..\..\src\LymCsharp.Hydraulics\LymCsharp.Hydraulics.csproj" />
+    <ProjectReference Include="..\..\src\LymCsharp.Reporting\LymCsharp.Reporting.csproj" />
   </ItemGroup>
 </Project>

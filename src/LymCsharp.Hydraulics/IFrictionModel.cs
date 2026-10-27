@@ -1,4 +1,4 @@
-namespace LyxCsharp.Hydraulics;
+namespace LymCsharp.Hydraulics;
 
 /// <summary>Computes the Darcy friction factor.</summary>
 public interface IFrictionModel

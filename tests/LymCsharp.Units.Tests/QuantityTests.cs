@@ -1,6 +1,6 @@
-using LyxCsharp.Units;
+using LymCsharp.Units;
 
-namespace LyxCsharp.Units.Tests;
+namespace LymCsharp.Units.Tests;
 
 public class QuantityTests
 {

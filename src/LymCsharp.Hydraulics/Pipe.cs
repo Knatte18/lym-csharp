@@ -1,6 +1,6 @@
-using LyxCsharp.Units;
+using LymCsharp.Units;
 
-namespace LyxCsharp.Hydraulics;
+namespace LymCsharp.Hydraulics;
 
 /// <summary>A circular pipe section.</summary>
 public sealed record Pipe(double DiameterMetres, double LengthMetres, double RoughnessMetres)

@@ -1,10 +1,10 @@
-using LyxCsharp.Hydraulics;
+using LymCsharp.Hydraulics;
 
-namespace LyxCsharp.Hydraulics.Tests;
+namespace LymCsharp.Hydraulics.Tests;
 
-public class HaalandFrictionTests
+public class FrictionTests
 {
-    private readonly HaalandFriction _model = new();
+    private readonly SwameeJainFriction _model = new();
 
     [TestCase(500.0)]
     [TestCase(1000.0)]
@@ -38,14 +38,9 @@ public class HaalandFrictionTests
         Assert.Throws<ArgumentOutOfRangeException>(() => _model.FrictionFactor(reynolds, 0.001));
     }
 
-    [TestCase(10_000.0, 0.0)]
-    [TestCase(100_000.0, 0.0001)]
-    [TestCase(1_000_000.0, 0.001)]
-    [TestCase(10_000_000.0, 0.01)]
-    public void TurbulentFactorAgreesWithSwameeJainWithinThreePercent(double reynolds, double relativeRoughness)
+    [Test]
+    public void WaterIsLessViscousThanOil()
     {
-        var swameeJain = new SwameeJainFriction().FrictionFactor(reynolds, relativeRoughness);
-
-        Assert.That(_model.FrictionFactor(reynolds, relativeRoughness), Is.EqualTo(swameeJain).Within(3).Percent);
+        Assert.That(Fluid.Water.ViscosityPascalSeconds, Is.LessThan(Fluid.Oil.ViscosityPascalSeconds));
     }
 }

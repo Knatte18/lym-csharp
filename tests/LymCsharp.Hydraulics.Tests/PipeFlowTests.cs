@@ -1,7 +1,7 @@
-using LyxCsharp.Hydraulics;
-using LyxCsharp.Units;
+using LymCsharp.Hydraulics;
+using LymCsharp.Units;
 
-namespace LyxCsharp.Hydraulics.Tests;
+namespace LymCsharp.Hydraulics.Tests;
 
 public class PipeFlowTests
 {

@@ -1,8 +1,8 @@
-using LyxCsharp.Hydraulics;
-using LyxCsharp.Reporting;
-using LyxCsharp.Units;
+using LymCsharp.Hydraulics;
+using LymCsharp.Reporting;
+using LymCsharp.Units;
 
-namespace LyxCsharp.Hydraulics.Tests;
+namespace LymCsharp.Hydraulics.Tests;
 
 public class ResultFormatterTests
 {
