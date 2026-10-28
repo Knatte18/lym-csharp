@@ -7,4 +7,5 @@ It exercises the C# path end to end: plans in C# glyphs, code written in C#, and
 - `LymCsharp.Hydraulics`: pipe flow calculations built on the units library.
 - `LymCsharp.Reporting`: formatting of calculation results.
 
-Build and test with `dotnet build` and `dotnet test`; slow tests carry `[Category("Slow")]`.
+The .NET solution lives in `dotnet/`, the hub's anchor, so LoomYard's anchor in a subdirectory is exercised as well.
+Build and test there with `dotnet build` and `dotnet test`; slow tests carry `[Category("Slow")]`.
