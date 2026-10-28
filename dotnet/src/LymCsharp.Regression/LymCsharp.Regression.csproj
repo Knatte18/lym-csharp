@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LymCsharp.Units\LymCsharp.Units.csproj" />
+    <ProjectReference Include="..\LymCsharp.Hydraulics\LymCsharp.Hydraulics.csproj" />
+    <ProjectReference Include="..\LymCsharp.Reporting\LymCsharp.Reporting.csproj" />
+  </ItemGroup>
+</Project>
