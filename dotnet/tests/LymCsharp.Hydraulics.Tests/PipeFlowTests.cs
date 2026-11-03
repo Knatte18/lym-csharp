@@ -151,6 +151,19 @@ public class PipeFlowTests
     }
 
     [Test]
+    public void RepeatedTurbulentFlowReachesFrictionModelOnce()
+    {
+        var friction = new CountingFriction();
+        var calculator = new PipeFlowCalculator(friction);
+        var flow = new Quantity(10, UnitCatalog.LitrePerSecond);
+
+        calculator.Calculate(SteelPipe, Fluid.Water, flow);
+        calculator.Calculate(SteelPipe, Fluid.Water, flow);
+
+        Assert.That(friction.CallCount, Is.EqualTo(1));
+    }
+
+    [Test]
     [Category("Slow")]
     public void DropGrowsMonotonicallyAcrossFlowSweep()
     {
@@ -163,6 +176,17 @@ public class PipeFlowTests
             var drop = calculator.Calculate(SteelPipe, Fluid.Water, flow).PressureDropPascals;
             Assert.That(drop, Is.GreaterThan(previous));
             previous = drop;
+        }
+    }
+
+    private sealed class CountingFriction : IFrictionModel
+    {
+        public int CallCount { get; private set; }
+
+        public double FrictionFactor(double reynolds, double relativeRoughness)
+        {
+            CallCount++;
+            return 0.02;
         }
     }
 
