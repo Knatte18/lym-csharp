@@ -42,6 +42,30 @@ public class PipeFlowTests
     }
 
     [Test]
+    public void ReynoldsMatchesFourRhoQOverPiMuD()
+    {
+        // Re = ρvD/μ with v = 4Q/(πD²) reduces to 4ρQ/(πμD).
+        static double Expected(Fluid fluid, double flowCubicMetresPerSecond) =>
+            4.0 * fluid.DensityKgPerCubicMetre * flowCubicMetresPerSecond
+            / (Math.PI * fluid.ViscosityPascalSeconds * SteelPipe.DiameterMetres);
+
+        var laminar = PipeFlowCalculator.Reynolds(
+            SteelPipe, Fluid.Oil, new Quantity(0.1, UnitCatalog.LitrePerSecond));
+        var turbulent = PipeFlowCalculator.Reynolds(
+            SteelPipe, Fluid.Water, new Quantity(10, UnitCatalog.LitrePerSecond));
+
+        var expectedLaminar = Expected(Fluid.Oil, 0.0001);
+        var expectedTurbulent = Expected(Fluid.Water, 0.01);
+        Assert.Multiple(() =>
+        {
+            Assert.That(laminar, Is.EqualTo(expectedLaminar).Within(expectedLaminar * 1e-12));
+            Assert.That(PipeFlowCalculator.Classify(laminar), Is.EqualTo(FlowRegime.Laminar));
+            Assert.That(turbulent, Is.EqualTo(expectedTurbulent).Within(expectedTurbulent * 1e-12));
+            Assert.That(PipeFlowCalculator.Classify(turbulent), Is.EqualTo(FlowRegime.Turbulent));
+        });
+    }
+
+    [Test]
     public void WaterAtModerateFlowIsTurbulent()
     {
         var result = new PipeFlowCalculator().Calculate(
