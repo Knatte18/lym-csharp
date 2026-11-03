@@ -42,6 +42,9 @@ public static class RegressionCases
         PipeFlowCase(
             "oil-steel-6in-turbulent", new HaalandFriction(), Steel6Inch, Fluid.Oil,
             new Quantity(36.5, UnitCatalog.LitrePerSecond), UnitCatalog.Bar),
+        PipeFlowCase(
+            "water-pvc-2in-transitional-churchill", new ChurchillFriction(), Pvc2Inch, Fluid.Water,
+            new Quantity(7.2, UnitCatalog.LitrePerMinute), UnitCatalog.Psi),
     ];
 
     private static RegressionCase PipeFlowCase(
