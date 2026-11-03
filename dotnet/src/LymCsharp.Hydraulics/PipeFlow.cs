@@ -10,9 +10,15 @@ public sealed record PipeFlowResult(
     double FrictionFactor,
     double PressureDropPascals);
 
-/// <summary>Pressure drop and regime for a fluid flowing through a pipe.</summary>
+/// <summary>
+/// Pressure drop and regime for a fluid flowing through a pipe.
+/// Each calculator remembers the turbulent friction factor of every flow it has solved,
+/// so a repeated flow skips the friction model and gets the same result.
+/// </summary>
 public sealed class PipeFlowCalculator(IFrictionModel friction)
 {
+    private readonly CachedFrictionModel cachedFriction = new(friction);
+
     public PipeFlowCalculator() : this(new SwameeJainFriction())
     {
     }
@@ -38,7 +44,7 @@ public sealed class PipeFlowCalculator(IFrictionModel friction)
     {
         var velocity = MeanVelocityMetresPerSecond(pipe, flow);
         var reynolds = Reynolds(pipe, fluid, flow);
-        var f = friction.FrictionFactor(reynolds, pipe.RoughnessMetres / pipe.DiameterMetres);
+        var f = cachedFriction.FrictionFactor(reynolds, pipe.RoughnessMetres / pipe.DiameterMetres);
         var drop = f * (pipe.LengthMetres / pipe.DiameterMetres)
                    * fluid.DensityKgPerCubicMetre * velocity * velocity / 2.0;
 
