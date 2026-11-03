@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace LymCsharp.Units;
 
 /// <summary>The physical dimension a unit measures.</summary>
@@ -43,4 +45,23 @@ public readonly record struct Quantity(double Value, IUnit Unit)
     }
 
     public override string ToString() => $"{Value:0.###} {Unit.Symbol}";
+
+    /// <summary>
+    /// Reads a quantity from a number, one space and a unit symbol, the form <see cref="ToString"/> writes.
+    /// The number is read in the current culture, as <see cref="ToString"/> writes it.
+    /// </summary>
+    /// <exception cref="FormatException">The text holds no space, or its number part is not a number.</exception>
+    /// <exception cref="KeyNotFoundException">The unit symbol names no known unit.</exception>
+    public static Quantity Parse(string text)
+    {
+        var separator = text.IndexOf(' ');
+        if (separator < 0)
+        {
+            throw new FormatException($"Quantity '{text}' has no space between value and unit.");
+        }
+
+        var value = double.Parse(text[..separator], NumberStyles.Float, CultureInfo.CurrentCulture);
+        var unit = UnitRegistry.Find(text[(separator + 1)..]);
+        return new Quantity(value, unit);
+    }
 }

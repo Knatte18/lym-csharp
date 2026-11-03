@@ -2,6 +2,7 @@ using LymCsharp.Units;
 
 namespace LymCsharp.Units.Tests;
 
+[SetCulture("")]
 public class QuantityTests
 {
     [TestCase(1.0, 100.0)]
@@ -68,6 +69,54 @@ public class QuantityTests
     public void ToStringShowsValueAndSymbol()
     {
         Assert.That(new Quantity(1.5, UnitCatalog.Bar).ToString(), Is.EqualTo("1.5 bar"));
+    }
+
+    private static IEnumerable<TestCaseData> ParseCases()
+    {
+        yield return new TestCaseData("1.5 bar", new Quantity(1.5, UnitCatalog.Bar));
+        yield return new TestCaseData("7.2 l/min", new Quantity(7.2, UnitCatalog.LitrePerMinute));
+    }
+
+    [TestCaseSource(nameof(ParseCases))]
+    public void ParseReadsValueAndUnit(string text, Quantity expected)
+    {
+        Assert.That(Quantity.Parse(text), Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void ParseReadsBackToStringOutput()
+    {
+        var quantity = new Quantity(3.25, UnitCatalog.Psi);
+
+        Assert.That(Quantity.Parse(quantity.ToString()), Is.EqualTo(quantity));
+    }
+
+    [Test]
+    public void ParsingUnknownSymbolThrows()
+    {
+        Assert.Throws<KeyNotFoundException>(() => Quantity.Parse("1.5 furlong"));
+    }
+
+    [TestCase("1.5bar")]
+    [TestCase("abc bar")]
+    [TestCase("1,5 bar")]
+    public void ParsingTextThatCannotBeSplitOrReadThrows(string text)
+    {
+        Assert.Throws<FormatException>(() => Quantity.Parse(text));
+    }
+
+    // SetCulture changes process-global state for the test's duration.
+    [Test]
+    [SetCulture("de-DE")]
+    public void ParseReadsTheCurrentCulturesDecimalSeparator()
+    {
+        var quantity = new Quantity(3.25, UnitCatalog.Psi);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(Quantity.Parse(quantity.ToString()), Is.EqualTo(quantity));
+            Assert.Throws<FormatException>(() => Quantity.Parse("1.5 bar"));
+        });
     }
 
     [Test]
