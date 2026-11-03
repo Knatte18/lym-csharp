@@ -22,12 +22,11 @@ public class ChurchillFrictionTests
     }
 
     [Test]
-    public void TransitionalFactorLiesBetweenLaminarAndTurbulentValues()
+    public void TransitionalFactorMatchesReferenceValue()
     {
         var factor = _model.FrictionFactor(3000.0, 0.0001);
 
-        Assert.That(factor, Is.GreaterThan(64.0 / 3000.0));
-        Assert.That(factor, Is.EqualTo(new ColebrookFriction().FrictionFactor(3000.0, 0.0001)).Within(5).Percent);
+        Assert.That(factor, Is.EqualTo(0.04305).Within(1).Percent);
     }
 
     [TestCase(10_000.0, 0.0)]
