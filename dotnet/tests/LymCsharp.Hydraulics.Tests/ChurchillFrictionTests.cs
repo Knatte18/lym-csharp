@@ -21,6 +21,15 @@ public class ChurchillFrictionTests
         Assert.Throws<ArgumentOutOfRangeException>(() => _model.FrictionFactor(reynolds, 0.001));
     }
 
+    [Test]
+    public void TransitionalFactorLiesBetweenLaminarAndTurbulentValues()
+    {
+        var factor = _model.FrictionFactor(3000.0, 0.0001);
+
+        Assert.That(factor, Is.GreaterThan(64.0 / 3000.0));
+        Assert.That(factor, Is.EqualTo(new ColebrookFriction().FrictionFactor(3000.0, 0.0001)).Within(5).Percent);
+    }
+
     [TestCase(10_000.0, 0.0)]
     [TestCase(100_000.0, 0.0001)]
     [TestCase(100_000.0, 0.001)]
