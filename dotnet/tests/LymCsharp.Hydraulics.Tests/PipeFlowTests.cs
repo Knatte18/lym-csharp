@@ -132,6 +132,14 @@ public class PipeFlowTests
             calculator.Calculate(SteelPipe, Fluid.Water, new Quantity(flow, UnitCatalog.LitrePerSecond)));
     }
 
+    [TestCase(0.0)]
+    [TestCase(-1.0)]
+    public void ReynoldsRejectsNonPositiveFlow(double flow)
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+            PipeFlowCalculator.Reynolds(SteelPipe, Fluid.Water, new Quantity(flow, UnitCatalog.LitrePerSecond)));
+    }
+
     [Test]
     public void CustomFrictionModelIsUsed()
     {
