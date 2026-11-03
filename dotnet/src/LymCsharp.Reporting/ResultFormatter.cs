@@ -12,13 +12,18 @@ public static class ResultFormatter
     /// <summary>
     /// Renders the flow regime, velocity, Reynolds number and pressure drop in <paramref name="pressureUnit"/> as one line.
     /// Every numeric value is rounded to 4 significant digits and printed without trailing zeros.
+    /// A transitional flow's line ends with the note " (transitional: friction factor uncertain)",
+    /// because no friction model is reliable between laminar and turbulent flow.
     /// </summary>
     public static string Format(PipeFlowResult result, IUnit pressureUnit)
     {
         var drop = new Quantity(result.PressureDropPascals, UnitCatalog.Pascal).ConvertTo(pressureUnit);
-        return $"{result.Regime} flow, v = {FormatToSignificantDigits(result.VelocityMetresPerSecond)} m/s, "
-               + $"Re = {FormatToSignificantDigits(result.Reynolds)}, "
-               + $"dP = {FormatToSignificantDigits(drop.Value)} {drop.Unit.Symbol}";
+        var line = $"{result.Regime} flow, v = {FormatToSignificantDigits(result.VelocityMetresPerSecond)} m/s, "
+                   + $"Re = {FormatToSignificantDigits(result.Reynolds)}, "
+                   + $"dP = {FormatToSignificantDigits(drop.Value)} {drop.Unit.Symbol}";
+        return result.Regime == FlowRegime.Transitional
+            ? line + " (transitional: friction factor uncertain)"
+            : line;
     }
 
     // Fixed-point text, because interpolating a double prints exponent notation below 1e-4.
