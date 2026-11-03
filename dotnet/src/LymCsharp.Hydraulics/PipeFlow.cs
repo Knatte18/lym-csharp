@@ -12,7 +12,7 @@ public sealed record PipeFlowResult(
 
 /// <summary>
 /// Pressure drop and regime for a fluid flowing through a pipe.
-/// Each calculator remembers the turbulent friction factor of every flow it has solved,
+/// Each calculator remembers the friction factor of every flow it has solved at a Reynolds number of 2300 or more,
 /// so a repeated flow skips the friction model and gets the same result.
 /// </summary>
 public sealed class PipeFlowCalculator(IFrictionModel friction)
